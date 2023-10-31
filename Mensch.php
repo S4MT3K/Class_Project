@@ -8,17 +8,17 @@ class Auto
     private string $modell;
     private int $baujahr;
     private int $kmstand;
-    private int $VMAX;
+    private int $vmax;
     private string $nickname;
 
-    public function __construct($Marke, $Modell, $Baujahr, $nickname,$kmstand,$VMAX )
+    public function __construct($Marke, $Modell, $Baujahr, $nickname,$kmstand,$vmax )
     {
         $this->marke = $Marke;
         $this->modell = $Modell;
         $this->baujahr = $Baujahr;
         $this->nickname = $nickname;
         $this->kmstand = $kmstand;
-        $this->VMAX = $VMAX;
+        $this->vmax = $vmax;
     }
 
     public function set_marke($marke): void

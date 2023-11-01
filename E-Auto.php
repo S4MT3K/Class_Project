@@ -3,6 +3,7 @@
 class ECar
 {
     private static self $Ecar ;                                                                              //auf null gesetzt weil die erste "(nicht) instanz" null ist also nichts weil nicht erstellt
+    private static int $anzahl = 0;
 
     private string $brand;
     private string $model;
@@ -18,11 +19,17 @@ class ECar
         $this->year = $year;
         $this->range = $range;
         $this->loading = $loading;
+        self::$anzahl++;
     }
 
     public function getModel()
     {
         return $this->model;
+    }
+
+    public static function getClassCount()
+    {
+        return self::$anzahl;
     }
 
     public static function ECarInit($brnd, $mdl, $yr, $rng, $ld) : self
@@ -77,3 +84,6 @@ echo '<br>';
 echo $vw->getModel();
 echo '<br>';
 echo $BMW->getModel();
+echo '<br>';
+
+echo " Es gibt " . ECar::getClassCount() . " klassen";

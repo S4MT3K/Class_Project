@@ -49,7 +49,7 @@ abstract class BaseVehicle
 
     public function getrange() : string
     {
-        //$rangeLeft = ($this->loading / 100) * $this->range; //TODO: Morph into Car Specific Getrange (wieviel noch)
+        //$rangeLeft = ($this->loading / 100) * $this->range; //
         return "The manufactor sets the max. range to $this->range ";
     }
 }

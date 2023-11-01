@@ -1,4 +1,4 @@
-<?php //DIESE VERSION IST NEU
+<?php //V1.0
 //Erstelle eine Klasse "Auto" mit den Attributen public "Marke", "Modell" und "Baujahr". Erstelle dann zwei Objekte dieser Klasse und setze die Werte für diese Attribute.
 
 

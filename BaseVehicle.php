@@ -1,4 +1,4 @@
-<?php //V1.1
+<?php //V1.11
 abstract class BaseVehicle
 {
     private   static    int       $anzahl = 0;

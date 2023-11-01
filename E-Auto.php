@@ -1,41 +1,20 @@
-<?php //V1.0
+<?php //V1.1
+require_once 'BaseVehicle.php';
 
-class ECar
+class ECar extends BaseVehicle
 {
-    private static self $Ecar ;                                                                              //auf null gesetzt weil die erste "(nicht) instanz" null ist also nichts weil nicht erstellt
-    private static int $anzahl = 0;
+    private int $loading = 100; //Ladung in % (Hier vereinfacht erstmal 100%)
+    private static self $Ecar;
 
-    private string $brand;
-    private string $model;
-    private int    $year;
-    private int    $range   = 600; //km
-    public  int    $loading = 100; //%
-
-
-    private function __construct($Brand, $Model, $year, $range, $loading)
+    public function __construct($Brand, $Model, $year, $range, $wheels, $loading)
     {
-        $this->brand = $Brand;
-        $this->model = $Model;
-        $this->year = $year;
-        $this->range = $range;
+        parent::__construct($Brand, $Model, $year, $range, 0, $wheels);
         $this->loading = $loading;
-        self::$anzahl++;
     }
 
-    public function getModel()
+    public static function ECarInit($brnd, $mdl, $yr, $rng, $whls, $ld) : self
     {
-        return $this->model;
-    }
-
-    public static function getClassCount()
-    {
-        return self::$anzahl;
-    }
-
-    public static function ECarInit($brnd, $mdl, $yr, $rng, $ld) : self
-    {
-
-        self::$Ecar = new self($brnd, $mdl, $yr, $rng, $ld);
+        self::$Ecar = new self($brnd, $mdl, $yr, $rng, $whls, $ld);
         return self::$Ecar;
     }
 
@@ -49,12 +28,12 @@ class ECar
         echo "Loading Battery to $amountPercentage %";
     }
 
-    public function SetBatteryLevel($amountPercentage) : void
+    public function SetBatteryLevel($amountPercentage) : void //obsolet da wir loading haben und initial unsere ladung beim erstellen setzen können
     {
         $this->loading = $amountPercentage;
     }
 
-    public function getrange() : string
+    public function getrestrange() : string
     {
         $rangeLeft = ($this->loading / 100) * $this->range;
         return "Die Restreichweite bei $this->loading% ladung beträgt ungefähr $rangeLeft km";
@@ -62,28 +41,35 @@ class ECar
 }
 
 
-$vw = ECar::ECarInit('Volkswagen', 'ID3', 2019, 600, 100);
-$BMW = ECar::ECarInit('BMW', '320D', 2012, 1200, 100); //VERERBEN WEIL IST DIESEL
+$vw = new ECar('Volkswagen', 'ID3', 2019, 600, 4, 100);
 
-echo $vw->getBatteryLevel();
-echo '<br>';
 echo $vw->getrange();
 echo '<br>';
-echo $vw->SetBatteryLevel(60);
+echo $vw->getrestrange();
 echo '<br>';
-echo $vw->getBatteryLevel();
+echo "Die Motorengröße beträgt {$vw->getEngineSize()}, da wir hier ein E-Auto haben.";
+//$BMW = ECar::ECarInit('BMW', '320D', 2012, 1200, 100); //VERERBEN WEIL IST DIESEL
 echo '<br>';
-echo $vw->getrange();
-echo '<br>';
-echo $vw->LoadBattery(100);
-echo '<br>';
-echo $vw->getrange();
-echo '<br>';
-echo '<br>';
-
-echo $vw->getModel();
-echo '<br>';
-echo $BMW->getModel();
-echo '<br>';
-
-echo " Es gibt " . ECar::getClassCount() . " klassen";
+echo BaseVehicle::getClassCount() . ' classes Active';
+//echo $vw->getBatteryLevel();
+//echo '<br>';
+//echo $vw->getrange();
+//echo '<br>';
+//echo $vw->SetBatteryLevel(60);
+//echo '<br>';
+//echo $vw->getBatteryLevel();
+//echo '<br>';
+//echo $vw->getrange();
+//echo '<br>';
+//echo $vw->LoadBattery(100);
+//echo '<br>';
+//echo $vw->getrange();
+//echo '<br>';
+//echo '<br>';
+//
+//echo $vw->getModel();
+//echo '<br>';
+//echo $BMW->getModel();
+//echo '<br>';
+//
+//echo " Es gibt " . ECar::getClassCount() . " klassen";

@@ -41,16 +41,7 @@ class ECar extends BaseVehicle
 }
 
 
-$vw = new ECar('Volkswagen', 'ID3', 2019, 600, 4, 100);
 
-echo $vw->getrange();
-echo '<br>';
-echo $vw->getrestrange();
-echo '<br>';
-echo "Die Motorengröße beträgt {$vw->getEngineSize()}, da wir hier ein E-Auto haben.";
-//$BMW = ECar::ECarInit('BMW', '320D', 2012, 1200, 100); //VERERBEN WEIL IST DIESEL
-echo '<br>';
-echo BaseVehicle::getClassCount() . ' classes Active';
 //echo $vw->getBatteryLevel();
 //echo '<br>';
 //echo $vw->getrange();

@@ -30,7 +30,7 @@ class LKW extends BaseVehicle
     {
         if (empty($this->anhaenger))
         {
-            return "This car has no trailers: $this->anhaenger";
+            return "This vehicle has no trailers: $this->anhaenger";
         }
         return "This car has $this->anhaenger trailers";
     }
@@ -59,13 +59,4 @@ class LKW extends BaseVehicle
     }
 }
 
-$MyLkw = new LKW('MAN', 'PD1200', 2002, 3450, 6, 6, 'RED', 355, 2, 3500, 34999);
-$MyLkw2 = new LKW('MAN', 'PD1200', 2002, 3450, 6, 6, 'RED', 355, 2, 3500, 34999);
-echo $MyLkw->getLoadWeight();
-echo '<br>';
 
-echo $MyLkw->getrestrange();
-echo '<br>';
-echo $MyLkw->getModel();
-echo '<br>';
-echo LKW::getClassCount();
